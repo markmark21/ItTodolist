@@ -14,6 +14,7 @@ import {
     removeTodolistAC,
     todolistsReducer
 } from "./state/todolists-reducer";
+import {useDispatch} from "react-redux";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -31,6 +32,7 @@ export type TasksStateType = {
 function AppWithReducer() {
     let todolistId1 = v1();
     let todolistId2 = v1();
+
 
     let [todolists, dispatchToTodoistReducer] = useReducer(todolistsReducer, [
         {id: todolistId1, title: "What to learn", filter: "all"},
