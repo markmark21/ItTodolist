@@ -72,7 +72,7 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
             let task = tasks.find(t => t.id === action.taskId);
             //изменим таску, если она нашлась
             if (task) {
-                task.title = action.title;
+                task.title = action.title
             }
             return stateCopy;
         }
