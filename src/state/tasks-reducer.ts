@@ -70,7 +70,7 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
             let tasks = stateCopy[action.todolistId];
             // найдём нужную таску:
             let task = tasks.find(t => t.id === action.taskId);
-            //изменим таску, если она нашлась
+
             if (task) {
                 task.title = action.title
             }
