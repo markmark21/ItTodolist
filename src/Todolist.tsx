@@ -26,7 +26,7 @@ type PropsType = {
     filter: FilterValuesType
 }
 
-export function Todolist(props: PropsType) {
+export const Todolist = React.memo( (props: PropsType) => {
     const tasks = useSelector<AppRootState, TaskType[]>(state => state.tasks[props.id]);
     const dispatch = useDispatch();
 
@@ -110,6 +110,6 @@ export function Todolist(props: PropsType) {
             </Button>
         </div>
     </div>;
-}
+})
 
 

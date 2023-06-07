@@ -37,18 +37,18 @@ function AppWithReducer() {
 
     const todolists = useSelector<AppRootState, Array<TodolistType>>(state => state.todolist)
 
-    function changeFilter(value: FilterValuesType, todolistId: string) {
+    const changeFilter = useCallback( (value: FilterValuesType, todolistId: string) => {
         dispatch(changeTodolistFilterAC(todolistId, value));
-    }
+    }, [])
 
-    function removeTodolist(id: string) {
+    const removeTodolist = useCallback( (id: string) => {
         dispatch(removeTodolistAC(id));
 
-    }
+    }, [])
 
-    function changeTodolistTitle(id: string, title: string) {
+    const changeTodolistTitle = useCallback( (id: string, title: string) => {
         dispatch(changeTodolistTitleAC(id, title));
-    }
+    }, [])
 
     const addTodolist = useCallback( (title: string) => {
         const action = addTodolistAC(title); //abracadabra ; v1 = 1
