@@ -1,18 +1,15 @@
-import React, {useCallback, useReducer, useState} from "react";
+import React, {useCallback} from "react";
 import "./App.css";
 import {TaskType, Todolist} from "./Todolist";
-import {v1} from "uuid";
 import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, Grid, Paper, Toolbar, Typography} from "@mui/material";
 import IconButton from "@mui/material/IconButton/IconButton";
 import {Menu} from "@mui/icons-material";
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./state/tasks-reducer";
 import {
     addTodolistAC,
     changeTodolistFilterAC,
     changeTodolistTitleAC,
     removeTodolistAC,
-    todolistsReducer
 } from "./state/todolists-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootState} from "./state/store";
@@ -30,30 +27,28 @@ export type TasksStateType = {
 }
 
 
-
-
 function AppWithReducer() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const todolists = useSelector<AppRootState, Array<TodolistType>>(state => state.todolist)
+    const todolists = useSelector<AppRootState, Array<TodolistType>>(state => state.todolist);
 
-    const changeFilter = useCallback( (value: FilterValuesType, todolistId: string) => {
+    const changeFilter = useCallback((value: FilterValuesType, todolistId: string) => {
         dispatch(changeTodolistFilterAC(todolistId, value));
-    }, [])
+    }, []);
 
-    const removeTodolist = useCallback( (id: string) => {
+    const removeTodolist = useCallback((id: string) => {
         dispatch(removeTodolistAC(id));
 
-    }, [])
+    }, []);
 
-    const changeTodolistTitle = useCallback( (id: string, title: string) => {
+    const changeTodolistTitle = useCallback((id: string, title: string) => {
         dispatch(changeTodolistTitleAC(id, title));
-    }, [])
+    }, []);
 
-    const addTodolist = useCallback( (title: string) => {
+    const addTodolist = useCallback((title: string) => {
         const action = addTodolistAC(title); //abracadabra ; v1 = 1
         dispatch(action); //abracadabra ; v1 = 1
-    }, [])
+    }, []);
 
     return (
         <div className="App">
