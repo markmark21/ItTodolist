@@ -8,7 +8,7 @@ import {Button, Checkbox} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootState} from "./state/store";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "./state/tasks-reducer";
-import {TasksStateType} from "./AppWithRedux";
+
 
 
 export type TaskType = {
