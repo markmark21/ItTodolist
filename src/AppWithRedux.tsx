@@ -26,13 +26,7 @@ export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
-/*
-const Fake = React.memo(function() {
-    console.log("FAKE")
-    const arr = useSelector<AppRootStateType, Array<TaskType>>(state => state.tasks.count)
-    return <h1>{arr.length}</h1>
-})
-*/
+
 
 function AppWithRedux() {
 
