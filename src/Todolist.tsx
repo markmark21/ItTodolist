@@ -10,7 +10,6 @@ import {AppRootState} from "./state/store";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "./state/tasks-reducer";
 
 
-
 export type TaskType = {
     id: string
     title: string
@@ -26,7 +25,7 @@ type PropsType = {
     filter: FilterValuesType
 }
 
-export const Todolist = React.memo(function (props: PropsType)  {
+export const Todolist = React.memo(function (props: PropsType) {
     const tasks = useSelector<AppRootState, TaskType[]>(state => state.tasks[props.id]);
     const dispatch = useDispatch();
 
@@ -38,9 +37,9 @@ export const Todolist = React.memo(function (props: PropsType)  {
     const removeTodolist = () => {
         props.removeTodolist(props.id);
     };
-    const changeTodolistTitle = (title: string) => {
+    const changeTodolistTitle = useCallback((title: string) => {
         props.changeTodolistTitle(props.id, title);
-    };
+    }, [props.id, props.changeTodolistTitle]);
 
 
     const onAllClickHandler = useCallback(() => props.changeFilter("all", props.id), [props.changeFilter, props.id]);
